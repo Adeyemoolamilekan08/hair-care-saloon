@@ -13,7 +13,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
     $query = mysqli_query($con, "update  tblappointment set Remark='$remark',Status='$status' where ID='$cid'");
     if ($query) {
       echo "<script>alert('Updated Successfuly');</script>";
-      echo "<script>window.location.href = 'view-appointment.php'</script>";
+      echo "<script>window.location.href = 'assign_customer_services.php'</script>";
     } else {
       echo "<script>alert('Something Went Wrong. Please try again.');</script>";
     }

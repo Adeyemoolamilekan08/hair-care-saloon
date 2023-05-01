@@ -23,7 +23,7 @@
         ?>
          <div class="image">
 
-           <img class="img-circle" src="admin_images/<?php echo $results['adminimage']; ?>" width="50%" height="100" alt="User profile picture">
+           <img class="img-circle" src="admin_images/<?php echo $results['adminimage']; ?>" width="100%" height="100%" alt="User profile picture">
 
          </div>
          <div class="info">
@@ -190,46 +190,50 @@
          </li>
          <li class="nav-item has-treeview">
            <a href="search_appointment.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
+             <i class="nav-icon fas fa-business-time"></i>
              <p>
                Search Appointments
              </p>
            </a>
          </li>
+
+         <li class="nav-item has-treeview">
+           <a href="assign_customer_services.php" class="nav-link">
+             <i class="nav-icon fas fa-edit"></i>
+             <p>
+               Assign Services
+             </p>
+           </a>
+         </li>
+
+
          <li class="nav-item has-treeview">
            <a href="search_invoice.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
+             <i class="nav-icon fas fa-business-time"></i>
              <p>
                Search Invoice
              </p>
            </a>
          </li>
-         <!-- <li class="nav-item has-treeview">
-           <a href="set-appointment.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
-             <p>
-               Set Appointments
-             </p>
-           </a>
-         </li> -->
+       
 
          <li class="nav-item has-treeview">
            <a href="holiday.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
+             <i class="nav-icon fa fa-user"></i>
              <p>
                Set Holiday
              </p>
            </a>
          </li>
 
-         <!-- <li class="nav-item has-treeview">
-           <a href="report.php" class="nav-link">
+         <li class="nav-item has-treeview">
+           <a href="view-holiday.php" class="nav-link">
              <i class="nav-icon fas fa-edit"></i>
              <p>
-               Report Message
+               View Holiday
              </p>
            </a>
-         </li> -->
+         </li>
 
          <!-- Testing -->
 

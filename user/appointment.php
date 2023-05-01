@@ -224,7 +224,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
                 <li class="breadcrumb-item active">Book Appointment</li>
               </ol>
             </div>
@@ -273,12 +273,8 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group col-md-12">
                       <label for="exampleInputEmail1">Phone Number</label>
-                      <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter email address" value="<?php echo $results['mobile']; ?>" required="true">
+                      <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Mobile Number" value="<?php echo $results['mobile']; ?>" required="true">
                     </div>
-
-
-
-
 
                     <div class="form-group col-md-12">
                       <label class="exampleInputEmail1" for="Subject">ServiceName</label>

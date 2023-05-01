@@ -1,13 +1,16 @@
 <?php
 session_start();
 include('includes/dbcon.php');
-if (strlen($_SESSION['staffid']==0)) {
+if (strlen($_SESSION['staffid'] == 0)) {
   header('location:logout.php');
-} 
+
+  echo ['staffid'];
+}
 ?>
 <!DOCTYPE html>
 <html>
 <?php include("includes/head.php"); ?>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -56,7 +59,7 @@ if (strlen($_SESSION['staffid']==0)) {
                         </button>
                       </div>
                       <div class="modal-body" id="info_update">
-                        <?php include("view_appointment.php");?>
+                        <?php include("view_appointment.php"); ?>
                       </div>
                       <div class="modal-footer ">
                       </div>
@@ -69,36 +72,43 @@ if (strlen($_SESSION['staffid']==0)) {
                 <!--   end modal -->
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
-                    <thead> 
-                      <tr> 
-                                              <th>#</th> 
-                                                <th>Name</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>Number</th>
-                      </tr> 
-                    </thead> 
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Number</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                    <?php
-                   include('includes/dbcon.php');
-                   $real=$_SESSION['staffname'];
-                   $query=mysqli_query($con,"SELECT * FROM tblappointment WHERE Staffs='$real' ");
-                   while($row=mysqli_fetch_array($query)){
-?>
+                      <?php
+                      include('includes/dbcon.php');
+                      $real = $_SESSION['staffid'];
+                      $query = mysqli_query($con, "SELECT * FROM tblstaffs WHERE ID='$real' ");
+                      $col = mysqli_fetch_array($query);
+                      $stfname = $col['UserName'];
+                      $query2 = mysqli_query($con, "SELECT * FROM tblappointment WHERE Staffs='$stfname' ");
 
-                        <tr> 
-                        <th scope="row"><?php echo $cnt;?></th>
-                        <td><?php  echo $row['Name'];?></td>
-                        <td><?php  echo $row['AptDate'];?></td> 
-                        <td><?php  echo $row['AptTime'];?></td> 
-                        <td><?php  echo $row['PhoneNumber'];?></td>
-                        <td><?php  echo $row['AptNumber'];?></td> 
-							  
+                      while ($row = mysqli_fetch_array($query2)) {
+
+
+                      ?>
+
+
+                        <tr>
+                          <th scope="row"><?php echo $cnt; ?></th>
+                          <td><?php echo $row['Name']; ?></td>
+                          <td><?php echo $row['AptDate']; ?></td>
+                          <td><?php echo $row['AptTime']; ?></td>
+                          <td><?php echo $row['PhoneNumber']; ?></td>
+                          <!-- <td><?php //echo $row['AptNumber']; ?></td> -->
+
                           <!-- <td><a href="#" id="<?php echo  $row['ID']; ?>" title="click for edit">View</a></td>  -->
-                        </tr>   
-                        <?php 
-                        $cnt=$cnt+1;
-                      }?>
+                        </tr>
+                      <?php
+                        $cnt = $cnt + 1;
+                      } ?>
                     </tbody>
                   </table>
                 </div>
@@ -127,14 +137,16 @@ if (strlen($_SESSION['staffid']==0)) {
   <!-- ./wrapper -->
   <?php include("includes/foot.php"); ?>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(document).on('click','.edit_data',function(){
-        var edit_id=$(this).attr('id');
+    $(document).ready(function() {
+      $(document).on('click', '.edit_data', function() {
+        var edit_id = $(this).attr('id');
         $.ajax({
-          url:"view_appointment.php",
-          type:"post",
-          data:{edit_id:edit_id},
-          success:function(data){
+          url: "view_appointment.php",
+          type: "post",
+          data: {
+            edit_id: edit_id
+          },
+          success: function(data) {
             $("#info_update").html(data);
             $("#editData").modal('show');
           }
@@ -143,4 +155,5 @@ if (strlen($_SESSION['staffid']==0)) {
     });
   </script>
 </body>
+
 </html>

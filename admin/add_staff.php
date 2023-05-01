@@ -47,7 +47,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                  <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
                   <li class="breadcrumb-item active">Add Staff</li>
                 </ol>
               </div>
@@ -115,7 +115,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                         <label for="exampleInputEmail1">Address/Details</label>
                         <textarea type="text" class="form-control" id="details" name="details" placeholder="Details" required="true" rows="4" cols="4"></textarea>
                       </div>
-                      <button type="submit" name="submit" class="btn btn-info">Add</button>
+                      <button type="submit" name="submit" class="btn btn-info">Add Staff</button>
                   </form>
                 </div>
               </div>

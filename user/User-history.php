@@ -80,7 +80,6 @@ if (strlen($_SESSION['userid'] == 0)) {
                         <th>Time</th>
                         <th>Service</th>
                         <th>Staff</th>
-
                       </tr>
                     </thead>
                     <tbody>

@@ -11,7 +11,7 @@
   </ul>
 
   <!-- SEARCH FORM -->
-  <!-- <form class="form-inline ml-3">
+  <form class="form-inline ml-3">
     <div class="input-group input-group-sm">
       <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
       <div class="input-group-append">
@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-  </form> -->
+  </form>
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -29,29 +29,30 @@
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
         <?php
-        $ret1 = mysqli_query($con, "select ID,Name from  tblappointment where Status=''");
-        $num = mysqli_num_rows($ret1);
-        ?>
-        <span class="badge badge-warning navbar-badge" style="font-size: 13px;"><?php echo $num; ?></span>
+        $ret1=mysqli_query($con,"select ID,Name from  tblappointment where Status=''");
+        $num=mysqli_num_rows($ret1);
+        ?>  
+        <span class="badge badge-warning navbar-badge" style="font-size: 13px;"><?php echo $num;?></span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-item dropdown-header"><?php echo $num; ?> Notifications</span>
+        <span class="dropdown-item dropdown-header"><?php echo $num;?> Notifications</span>
         <div class="dropdown-divider"></div>
-        <?php
-        $ret = mysqli_query($con, "select ID,Name from  tblappointment where Status='' ORDER BY ID DESC LIMIT 3");
-        $num2 = mysqli_num_rows($ret);
-        if ($num2 > 0) {
-          while ($result = mysqli_fetch_array($ret)) {
-        ?>
-            <a href="view-appointment.php?viewid=<?php echo $result['ID']; ?>" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> Appointment from <?php echo $result['Name']; ?>
+        <?php 
+        $ret=mysqli_query($con,"select ID,Name from  tblappointment where Status='' ORDER BY ID DESC LIMIT 3");
+        $num2=mysqli_num_rows($ret);
+        if($num2>0){
+          while($result=mysqli_fetch_array($ret))
+          {
+            ?>
+            <a href="view-appointment.php?viewid=<?php echo $result['ID'];?>" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> Appointment from <?php echo $result['Name'];?>
             </a>
             <div class="dropdown-divider"></div>
-          <?php
+            <?php
           }
-        } else { ?>
+        } else {?>
           <a class="dropdown-item" href="all_appointments.php">No New Appointment Received</a>
-        <?php
+          <?php 
         } ?>
 
 
@@ -68,14 +69,14 @@
         </a>
         <div class="dropdown-divider"></div>
         <a href="changepassword.php" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> settings
+          <i class="fas fa-users mr-2"></i> Change Password
         </a>
         <div class="dropdown-divider"></div>
         <a href="logout.php" class="dropdown-item">
-          <i class="fas fa-file mr-2"></i> logout
+          <i class="fas fa-file mr-2"></i> logout 
         </a>
       </div>
     </li>
   </ul>
 </nav>
-<!-- /.navbar -->
+    <!-- /.navbar -->

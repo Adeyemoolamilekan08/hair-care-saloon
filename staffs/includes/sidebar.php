@@ -26,8 +26,8 @@
           <div class="image">
 
           <img class="img-circle"
-           src="staff_images/<?php echo $results['staffimage'];?>" width="100" height="200"
-           alt="User profile picture"> 
+           src="staff_images/<?php echo $results['staffimage'];?>" width="100px" height="500px"
+           alt="Staff profile picture"> 
            
           </div>
           <div class="info">
@@ -95,7 +95,7 @@
       </li>
       <li class="nav-item has-treeview">
         <a href="search_appointment.php" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
+          <i class="far fa-circle"></i>
           <p>
             Search Appointments
           </p>
@@ -107,14 +107,24 @@
           <p>
             Search Invoice
           </p>
+
         </a>
       </li>
 
       <li class="nav-item has-treeview">
         <a href="today.php" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
+          <i class="nav-icon fas fa-book"></i>
           <p>
              Today Customer
+          </p>
+        </a>
+      </li>
+
+      <li class="nav-item has-treeview">
+        <a href="message.php" class="nav-link">
+          <i class="nav-icon fas fa-edit"></i>
+          <p>
+             Set Appointment Message
           </p>
         </a>
       </li>

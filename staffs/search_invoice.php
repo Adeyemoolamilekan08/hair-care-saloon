@@ -3,12 +3,13 @@ session_start();
 error_reporting(0);
 include('includes/dbcon.php');
 //if (strlen($_SESSION['staffid']==0)) {
-  //header('location:logout.php');
+//header('location:logout.php');
 //} 
 ?>
 <!DOCTYPE html>
 <html>
 <?php include("includes/head.php"); ?>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -29,8 +30,8 @@ include('includes/dbcon.php');
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">General Form</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                <li class="breadcrumb-item active">Search Invoice</li>
               </ol>
             </div>
           </div>
@@ -50,7 +51,7 @@ include('includes/dbcon.php');
                   </button>
                 </div>
                 <div class="modal-body" id="info_update">
-                  <?php include("view_invoice.php");?>
+                  <?php include("view_invoice.php"); ?>
                 </div>
                 <div class="modal-footer ">
                 </div>
@@ -71,70 +72,69 @@ include('includes/dbcon.php');
                   <h3 class="card-title">Search Invoice</h3>
                 </div>
                 <div class="card-body">
-                 <form method="post" name="search" action="">
-                  <div class="input-group input-group-md">
-                    <input type="text" id="searchdata"  name="searchdata" required="true" class="form-control">
-                    <span class="input-group-append">
-                      <button type="submit" name="search"  class="btn btn-primary btn-flat">Go!</button>
-                    </span>
-                  </div>
-                </form>
-                <!-- /input-group -->
+                  <form method="post" name="search" action="">
+                    <div class="input-group input-group-md">
+                      <input type="text" id="searchdata" name="searchdata" required="true" class="form-control">
+                      <span class="input-group-append">
+                        <button type="submit" name="search" class="btn btn-primary btn-flat">Go!</button>
+                      </span>
+                    </div>
+                  </form>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.card-body -->
               </div>
-              <!-- /.card-body -->
+              <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
-          <div class="card-body col-md-12">
-            <?php
-            if(isset($_POST['search']))
-            { 
+            <div class="card-body col-md-12">
+              <?php
+              if (isset($_POST['search'])) {
 
-              $sdata=$_POST['searchdata'];
+                $sdata = $_POST['searchdata'];
               ?>
-              <h5 align="center" style="color: blue;" class="mb-3">Result against "<?php echo $sdata;?>" keyword </h4> 
-                <table class="table table-bordered"> 
-                  <thead> 
-                    <tr> 
-                      <th>#</th> 
-                      <th>Invoice Id</th> 
-                      <th>Customer Name</th> 
-                      <th>Invoice Date</th> 
-                      <th>Action</th>
-                    </tr> 
-                  </thead> 
-                  <tbody>
-                    <?php
-                    $ret=mysqli_query($con,"select distinct  tblusers.name,tblinvoice.BillingId,tblinvoice.PostingDate from  tblusers   
-                      join tblinvoice on tblusers.id=tblinvoice.Userid  where tblinvoice.BillingId like '%$sdata%'");
-                    $num=mysqli_num_rows($ret);
-                    if($num>0){
-                      $cnt=1;
-                      while ($row=mysqli_fetch_array($ret)) {
-
-                        ?>
-
-                        <tr> 
-                          <th scope="row"><?php echo $cnt;?></th> 
-                          <td><?php  echo $row['BillingId'];?></td>
-                          <td><?php  echo $row['name'];?></td>
-                          <td><?php  echo $row['PostingDate'];?></td> 
-                          <td><a href="#"  class=" edit_data" id="<?php echo  $row['BillingId']; ?>" title="click to view">View</a>
-                          </td> 
-                        </tr>   
-                        <?php 
-                        $cnt=$cnt+1;
-                      } 
-                    } else { ?>
+                <h5 align="center" style="color: blue;" class="mb-3">Result against "<?php echo $sdata; ?>" keyword </h4>
+                  <table class="table table-bordered">
+                    <thead>
                       <tr>
-                        <td colspan="8"> No record found against this search</td>
+                        <th>#</th>
+                        <th>Invoice Id</th>
+                        <th>Customer Name</th>
+                        <th>Invoice Date</th>
+                        <th>Action</th>
                       </tr>
-
+                    </thead>
+                    <tbody>
                       <?php
-                    } 
-                  }?>
-                </tbody> 
-              </table> 
+                      $ret = mysqli_query($con, "select distinct  tblusers.name,tblinvoice.BillingId,tblinvoice.PostingDate from  tblusers   
+                      join tblinvoice on tblusers.id=tblinvoice.Userid  where tblinvoice.BillingId like '%$sdata%'");
+                      $num = mysqli_num_rows($ret);
+                      if ($num > 0) {
+                        $cnt = 1;
+                        while ($row = mysqli_fetch_array($ret)) {
+
+                      ?>
+
+                          <tr>
+                            <th scope="row"><?php echo $cnt; ?></th>
+                            <td><?php echo $row['BillingId']; ?></td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['PostingDate']; ?></td>
+                            <td><a href="#" class=" edit_data" id="<?php echo  $row['BillingId']; ?>" title="click to view">View</a>
+                            </td>
+                          </tr>
+                        <?php
+                          $cnt = $cnt + 1;
+                        }
+                      } else { ?>
+                        <tr>
+                          <td colspan="8"> No record found against this search</td>
+                        </tr>
+
+                    <?php
+                      }
+                    } ?>
+                    </tbody>
+                  </table>
             </div>
           </div>
           <!-- /.row -->
@@ -154,14 +154,16 @@ include('includes/dbcon.php');
   <!-- ./wrapper -->
   <?php include("includes/foot.php"); ?>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(document).on('click','.edit_data',function(){
-        var edit_id=$(this).attr('id');
+    $(document).ready(function() {
+      $(document).on('click', '.edit_data', function() {
+        var edit_id = $(this).attr('id');
         $.ajax({
-          url:"view_invoice.php",
-          type:"post",
-          data:{edit_id:edit_id},
-          success:function(data){
+          url: "view_invoice.php",
+          type: "post",
+          data: {
+            edit_id: edit_id
+          },
+          success: function(data) {
             $("#info_update").html(data);
             $("#editData").modal('show');
           }
@@ -170,4 +172,5 @@ include('includes/dbcon.php');
     });
   </script>
 </body>
+
 </html>

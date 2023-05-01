@@ -2,12 +2,13 @@
 session_start();
 include('includes/dbcon.php');
 //if (strlen($_SESSION['staffid']==0)) {
- // header('location:logout.php');
+// header('location:logout.php');
 //} 
 ?>
 <!DOCTYPE html>
 <html>
 <?php include("includes/head.php"); ?>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -28,8 +29,8 @@ include('includes/dbcon.php');
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">General Form</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                <li class="breadcrumb-item active">Search Appointment</li>
               </ol>
             </div>
           </div>
@@ -49,7 +50,7 @@ include('includes/dbcon.php');
                   </button>
                 </div>
                 <div class="modal-body" id="info_update">
-                  <?php include("view_appointment.php");?>
+                  <?php include("view_appointment.php"); ?>
                 </div>
                 <div class="modal-footer ">
                 </div>
@@ -70,71 +71,70 @@ include('includes/dbcon.php');
                   <h3 class="card-title">Search Appointment</h3>
                 </div>
                 <div class="card-body">
-                 <form method="post" name="search" action="">
-                  <div class="input-group input-group-md">
-                    <input type="text" id="searchdata"  name="searchdata" required="true" class="form-control">
-                    <span class="input-group-append">
-                      <button type="submit" name="search"  class="btn btn-info btn-flat">Go!</button>
-                    </span>
-                  </div>
-                </form>
-                <!-- /input-group -->
+                  <form method="post" name="search" action="">
+                    <div class="input-group input-group-md">
+                      <input type="text" id="searchdata" name="searchdata" required="true" class="form-control">
+                      <span class="input-group-append">
+                        <button type="submit" name="search" class="btn btn-info btn-flat">Go!</button>
+                      </span>
+                    </div>
+                  </form>
+                  <!-- /input-group -->
+                </div>
+                <!-- /.card-body -->
               </div>
-              <!-- /.card-body -->
+              <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
-          <div class="card-body col-md-12">
-            <?php
-            if(isset($_POST['search']))
-            { 
+            <div class="card-body col-md-12">
+              <?php
+              if (isset($_POST['search'])) {
 
-              $sdata=$_POST['searchdata'];
+                $sdata = $_POST['searchdata'];
               ?>
-              <h5 align="center" style="color: blue;" class="mb-3">Result against "<?php echo $sdata;?>" keyword </h4> 
-              <table class="table table-bordered"> 
-                <thead> 
-                  <tr> 
-                    <th>#</th> 
-                    <th> Appointment Number</th> 
-                    <th>Name</th>
-                    <th>Mobile Number</th> 
-                    <th>Appointment Date</th>
-                    <th>Appointment Time</th>
-                    <th>Action</th> 
-                  </tr> 
-                </thead> 
-                <tbody>
-                <?php
-$ret=mysqli_query($con,"select * from  tblappointment where AptNumber like '%$sdata%' || Name like '%$sdata%' || PhoneNumber like '%$sdata%'");
-$num=mysqli_num_rows($ret);
-if($num>0){
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-
-                      <tr> 
-                        <th scope="row"><?php echo $cnt;?></th> 
-                        <td><?php  echo $row['AptNumber'];?></td> 
-                        <td><?php  echo $row['Name'];?></td>
-                        <td><?php  echo $row['PhoneNumber'];?></td>
-                        <td><?php  echo $row['AptDate'];?></td> 
-                        <td><?php  echo $row['AptTime'];?></td> 
-                        <td><a href="#" class=" edit_data" id="<?php echo  $row['ID']; ?>" title="click for edit">View</a></td>  
-                        </tr>   <?php 
-                        $cnt=$cnt+1;
-                      } 
-                    } else { ?>
+                <h5 align="center" style="color: blue;" class="mb-3">Result against "<?php echo $sdata; ?>" keyword </h4>
+                  <table class="table table-bordered">
+                    <thead>
                       <tr>
-                        <td colspan="8"> No record found against this search</td>
-
+                        <th>#</th>
+                        <th> Appointment Number</th>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Appointment Date</th>
+                        <th>Appointment Time</th>
+                        <th>Action</th>
                       </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $ret = mysqli_query($con, "select * from  tblappointment where AptNumber like '%$sdata%' || Name like '%$sdata%' || PhoneNumber like '%$sdata%'");
+                      $num = mysqli_num_rows($ret);
+                      if ($num > 0) {
+                        $cnt = 1;
+                        while ($row = mysqli_fetch_array($ret)) {
 
-                    <?php } 
-                  }?>
-                </tbody> 
-              </table> 
+                      ?>
+
+                          <tr>
+                            <th scope="row"><?php echo $cnt; ?></th>
+                            <td><?php echo $row['AptNumber']; ?></td>
+                            <td><?php echo $row['Name']; ?></td>
+                            <td><?php echo $row['PhoneNumber']; ?></td>
+                            <td><?php echo $row['AptDate']; ?></td>
+                            <td><?php echo $row['AptTime']; ?></td>
+                            <td><a href="#" class=" edit_data" id="<?php echo  $row['ID']; ?>" title="click for edit">View</a></td>
+                          </tr> <?php
+                                $cnt = $cnt + 1;
+                              }
+                            } else { ?>
+                        <tr>
+                          <td colspan="8"> No record found against this search</td>
+
+                        </tr>
+
+                    <?php }
+                          } ?>
+                    </tbody>
+                  </table>
             </div>
           </div>
           <!-- /.row -->
@@ -154,14 +154,16 @@ while ($row=mysqli_fetch_array($ret)) {
   <!-- ./wrapper -->
   <?php include("includes/foot.php"); ?>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(document).on('click','.edit_data',function(){
-        var edit_id=$(this).attr('id');
+    $(document).ready(function() {
+      $(document).on('click', '.edit_data', function() {
+        var edit_id = $(this).attr('id');
         $.ajax({
-          url:"view_appointment.php",
-          type:"post",
-          data:{edit_id:edit_id},
-          success:function(data){
+          url: "view_appointment.php",
+          type: "post",
+          data: {
+            edit_id: edit_id
+          },
+          success: function(data) {
             $("#info_update").html(data);
             $("#editData").modal('show');
           }
@@ -170,4 +172,5 @@ while ($row=mysqli_fetch_array($ret)) {
     });
   </script>
 </body>
+
 </html>

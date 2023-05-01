@@ -69,7 +69,7 @@
         </a>
         <div class="dropdown-divider"></div>
         <a href="changepassword.php" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> settings 
+          <i class="fas fa-users mr-2"></i> Change Password
         </a>
         <div class="dropdown-divider"></div>
         <a href="logout.php" class="dropdown-item">

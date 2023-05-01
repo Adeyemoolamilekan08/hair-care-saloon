@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
 
                 header('location:user/dashboard.php');
             } else {
-                $msg = "invalid details";
+                $msg = "Invalid Login Details";
             }
         }
     }
