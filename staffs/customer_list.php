@@ -94,13 +94,14 @@ if (strlen($_SESSION['staffid']==0)) {
                <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead> 
-                    <tr> 
-                    <th>#</th> 
-									 <th>Name</th>
-									  <th>Mobile</th>
-									   <th>Creation Date</th>
-									   <th>Action</th>
-                    </tr> 
+                  <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Gender</th>
+                        <th>Image</th>
+                      </tr>
                   </thead> 
                   <tbody>
                   <?php
@@ -109,16 +110,22 @@ $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
+ <tr>
+                        <td><?php echo $cnt; ?></td>
+                          <td><?php echo $row['name']; ?></td>
+                          <td><?php echo $row['email']; ?></td>
+                          <td><?php echo $row['mobile']; ?></td>
+                          <!-- <td><?php //echo $row['Password']; ?></td> -->
+                          <td><?php echo $row['sex']; ?></td>
+                          <td><a href="View_all_customers.php?id=<?php echo $row['ID']; ?>">
+                              <img style="height: 50px;width: 50px;border-radius: 30%;" src="<?php echo "../user/user_images/" . $row['userimage']; ?>" /></a>
+                          </td>
 
-                      <tr> 
-                      <th scope="row"><?php echo $cnt;?></th> 
-							  <td><?php  echo $row['name'];?></td>
-							   <td><?php  echo $row['mobile'];?></td>
-							   <td><?php  echo $row['sex'];?></td> 
-                        <td>
-                          <a href="edit_customer.php" class=" btn btn-sm btn-primary edit_data" id="<?php echo  $row['id']; ?>" title="click for edit">Edit</a>
-                        
-                        </tr>   
+                          <!-- <td>
+                            <a href="#" class=" btn btn-sm btn-primary edit_data" id="<?php //echo  $row['ID']; ?>" title="click for edit">Edit</a>
+                             <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php //echo  $row['ID']; ?>" title="assign services">Assign Services</a> 
+                          </td> -->
+                        </tr>
                         <?php 
                         $cnt=$cnt+1;
                       }?>

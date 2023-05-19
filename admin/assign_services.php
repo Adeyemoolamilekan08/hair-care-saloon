@@ -6,11 +6,15 @@ if (isset($_POST['save'])) {
   $uid = $_SESSION['gid'];
   $invoiceid = mt_rand(100000000, 999999999);
   $sid = $_POST['sids'];
+  $serv_id = $_POST['serv_id'];
   for ($i = 0; $i < count($sid); $i++) {
     $svid = $sid[$i];
     $ret = mysqli_query($con, "insert into tblinvoice(Userid,ServiceId,BillingId) values('$uid','$svid','$invoiceid');");
-    echo '<script>alert("Invoice created successfully. Invoice number is "+"' . $invoiceid . '")</script>';
-    echo "<script>window.location.href ='invoices.php'</script>";
+    $ret .= mysqli_query($con, "update  tblappointment  set  Assign='1'  where ID ='$serv_id'");
+    if ($ret) {
+      echo '<script>alert("Invoice created successfully. Invoice number is "+"' . $invoiceid . '")</script>';
+      echo "<script>window.location.href ='invoices.php'</script>";
+    }
   }
 }
 ?>
@@ -40,7 +44,7 @@ if (isset($_POST['save'])) {
         ?>
           <tr>
             <th scope="row"><?php echo $cnt; ?></th>
-            <td><?php echo $row['ServiceName']; ?></td>
+            <td><?php echo $row['ServiceName']; ?> <input type="hidden" name="serv_id" value="<?php echo $eid; ?>"> </td>
             <td><?php echo $row['Cost']; ?></td>
             <td><input type="checkbox" name="sids[]" value="<?php echo $row['ID']; ?>"></td>
           </tr>

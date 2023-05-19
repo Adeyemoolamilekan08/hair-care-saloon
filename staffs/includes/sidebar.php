@@ -1,3 +1,12 @@
+ <style>
+  .button:hover {
+    background-color: #007bff;
+  /* background-color: #4CAF50; Green  */
+  color: white;
+}
+</style>
+ 
+ 
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
@@ -42,15 +51,15 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item has-treeview menu-open">
-          <a href="dashboard.php" class="nav-link active">
+        <li class="nav-item has-treeview  button">
+          <a href="dashboard.php" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
             </p>
           </a>
         </li>
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p>
@@ -85,25 +94,25 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="invoices.php" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
+          <i class="nav-icon fa fa-solid fa-file-invoice-dollar"></i>
           <p>
             Invoice
           </p>
         </a>
       </li>
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="search_appointment.php" class="nav-link">
-          <i class="far fa-circle"></i>
+          <i class="fas fa-business-time"></i>
           <p>
             Search Appointments
           </p>
         </a>
       </li>
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="search_invoice.php" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
+          <i class="nav-icon fa fa-regular fa-receipt"></i>
           <p>
             Search Invoice
           </p>
@@ -111,7 +120,7 @@
         </a>
       </li>
 
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="today.php" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p>
@@ -120,9 +129,9 @@
         </a>
       </li>
 
-      <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview button">
         <a href="message.php" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
+          <i class="nav-icon fas fa-ring"></i>
           <p>
              Set Appointment Message
           </p>

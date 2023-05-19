@@ -6,17 +6,20 @@ if (strlen($_SESSION['staffid']==0)) {
 } else{
   if(isset($_POST['submit']))
   {
-    $eid=$_SESSION['staffid'];
-    $staffimage=$_FILES["staffimage"]["name"];
-    move_uploaded_file($_FILES["staffimage"]["tmp_name"],"staff_images/".$_FILES["staffimage"]["name"]);
-    $sql="update tblstaffs set staffimage=:staffimage where id=:eid";
-    $query= mysqli_query($con, $sql);
-    if ($query) {
-      echo '<script>alert("updated successfuly")</script>';
-      echo "<script>window.location.href ='update_userimage.php'</script>";
-    }else{
-      echo '<script>alert("something went wrong, please try again later")</script>';
-    }
+    // $eid=$_SESSION['staffid'];
+    // $staffimage=$_FILES["staffimage"]["name"];
+    // if(!$staffimage){
+    //   echo '<script>alert("updated successfuly")</script>';
+    // }
+    // move_uploaded_file($_FILES["staffimage"]["tmp_name"],"staff_images/".$_FILES["staffimage"]["name"]);
+    // $sql="update tblstaffs set staffimage=:staffimage where id=:eid";
+    // $query= mysqli_query($con, $sql);
+    // if ($query) {
+    //   echo '<script>alert("updated successfuly")</script>';
+    //   echo "<script>window.location.href ='update_userimage.php'</script>";
+    // }else{
+    //   echo '<script>alert("something went wrong, please try again later")</script>';
+    // }
 
   }
   ?>
@@ -35,7 +38,10 @@ if (strlen($_SESSION['staffid']==0)) {
     $name=$_POST['firstname'];
     $password=$_POST['password'];
     $username=$_POST['username'];
-    $sql="update tblstaffs set Name=:name,UserName=:username,MobileNumber=:mobile,Email=:email,Password=:password where id=:eid";
+    // $sql="update tblstaffs set Name=:name,UserName=:username,MobileNumber=:mobile,Email=:email,Password=:password where id=:eid";
+    
+    $sql = "UPDATE tblstaffs SET Name='$name', UserName='$username', Email='$email', Password='$password', MobileNumber='$mobile' WHERE id=$eid";
+
     $query= mysqli_query($con, $sql);
     echo '<script>alert("updated successfuly")</script>';
     echo "<script>window.location.href ='profile.php'</script>";

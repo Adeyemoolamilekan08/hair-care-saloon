@@ -140,7 +140,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                         <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-primary">
+                            <div class="small-box bg-warning">
                                 <?php
                                 //Yesterday's sale
                                 $yesterdaysale = 0;
@@ -194,7 +194,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                         <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-primary">
+                            <div class="small-box bg-success">
                                 <?php
                                 //Total Sale
                                 $totalsale = 0;

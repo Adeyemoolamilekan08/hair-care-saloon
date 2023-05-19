@@ -1,4 +1,12 @@
- <!-- Main Sidebar Container -->
+
+<style>
+  .button:hover {
+    background-color: #007bff;
+  /* background-color: #4CAF50; Green  */
+  color: white;
+}
+</style>
+<!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
    <!-- Brand Logo -->
    <a href="dashboard.php" class="brand-link">
@@ -41,8 +49,8 @@
      <!-- Sidebar Menu -->
      <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-         <li class="nav-item has-treeview menu-open">
-           <a href="dashboard.php" class="nav-link active">
+         <li class="nav-item has-treeview button">
+           <a href="dashboard.php" class="nav-link ">
              <i class="nav-icon fas fa-tachometer-alt"></i>
              <p>
                Dashboard
@@ -51,7 +59,7 @@
          </li>
 
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="User-history.php" class="nav-link">
              <i class="nav-icon fas fa-user"></i>
              <p>
@@ -59,7 +67,7 @@
              </p>
            </a>
          </li>
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="report-staff.php" class="nav-link">
              <i class="nav-icon fas fa-bell"></i>
              <p>
@@ -67,16 +75,8 @@
              </p>
            </a>
          </li>
-         <!-- <li class="nav-item has-treeview">
-        <a href="search_invoice.php" class="nav-link">
-          <i class="nav-icon fas fa-receipt"></i>
-          <p>
-            My Invoice
-          </p>
-        </a>
-      </li> -->
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="appointment.php" class="nav-link">
              <i class="nav-icon fas fa-book"></i>
              <p>
@@ -84,16 +84,7 @@
              </p>
            </a>
          </li>
-         <!--li class="nav-header">USER MANAGEMENT</li-->
-         <!-- User Menu -->
-         <!--li class="nav-item">
-        <a href="userregister.php" class="nav-link">
-         <i class="far fa-user nav-icon"></i>
-         <p>
-          Register User
-        </p>
-      </a>
-    </li-->
+     
          <!-- /.user menu -->
        </ul>
      </nav>

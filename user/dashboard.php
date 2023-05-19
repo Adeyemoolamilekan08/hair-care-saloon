@@ -40,7 +40,8 @@ if (strlen($_SESSION['userid'] == 0)) {
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-3 col-6">
+                        
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <?php //$query1=mysqli_query($con,"Select * from tblusers");
@@ -56,7 +57,10 @@ if (strlen($_SESSION['userid'] == 0)) {
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+
+
+
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <?php //$query2=mysqli_query($con,"Select * from tblappointment");
@@ -71,24 +75,12 @@ if (strlen($_SESSION['userid'] == 0)) {
                                 <a href="report-staff.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <?php //$query3=mysqli_query($con,"Select * from tblappointment where Status='1'");
-                                //$totalaccapt=mysqli_num_rows($query3);
-                                ?>
-                                <div class="inner">
-                                    <h3><?php //echo $totalaccapt;
-                                        ?></h3>
+                     
+                        </div> 
 
-                                    <p>My Invoice</p>
-                                </div>
-                                <a href="invoices.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
+
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <?php //$query4=mysqli_query($con,"Select * from tblappointment where Status='2'");

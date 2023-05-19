@@ -5,17 +5,17 @@ if (strlen($_SESSION['adminid'] == 0)) {
   header('location:logout.php');
 } else {
   if (isset($_POST['submit'])) {
-    $eid = $_SESSION['adminid'];
-    $adminimage = $_FILES["adminimage"]["name"];
-    move_uploaded_file($_FILES["adminimage"]["tmp_name"], "admin_images/" . $_FILES["adminimage"]["name"]);
-    $sql = "update tbladmin set adminimage=:adminimage where id=:eid";
-    $query = mysqli_query($con, $sql);
-    if ($query) {
-      echo '<script>alert("updated successfuly")</script>';
-      echo "<script>window.location.href ='update_userimage.php'</script>";
-    } else {
-      echo '<script>alert("something went wrong, please try again later")</script>';
-    }
+    // $eid = $_SESSION['adminid'];
+    // $adminimage = $_FILES["adminimage"]["name"];
+    // move_uploaded_file($_FILES["adminimage"]["tmp_name"], "admin_images/" . $_FILES["adminimage"]["name"]);
+    // $sql = "update tbladmin set adminimage=:adminimage where id=:eid";
+    // $query = mysqli_query($con, $sql);
+    // if ($query) {
+    //   echo '<script>alert("updated successfuly")</script>';
+    //   echo "<script>window.location.href ='update_userimage.php'</script>";
+    // } else {
+    //   echo '<script>alert("something went wrong, please try again later")</script>';
+    // }
   }
 ?>
 
@@ -32,7 +32,9 @@ if (strlen($_SESSION['adminid'] == 0)) {
                                             $name = $_POST['firstname'];
                                             $password = $_POST['password'];
                                             $username = $_POST['username'];
-                                            $sql = "update tbladmin set AdminName=:name,UserName=:username,MobileNumber=:mobile,Email=:email,Password=:password where id=:eid";
+
+                                            $sql = "UPDATE tbladmin SET AdminName='$name', UserName='$username', Email='$email', 	Password='$password', MobileNumber='$mobile' WHERE id=$eid";
+                                            // $sql = "update tbladmin set AdminName=:name,UserName=:username,MobileNumber=:mobile,Email=:email,Password=:password where id=:eid";
                                             $query = mysqli_query($con, $sql);
                                             echo '<script>alert("updated successfuly")</script>';
                                             echo "<script>window.location.href ='profile.php'</script>";

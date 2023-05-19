@@ -8,6 +8,7 @@ include('includes/dbcon.php');
 if (isset($_POST['submit'])) {
 
 	$name = $_POST['name'];
+	$_SESSION['Name'] = $name;
 	$email = $_POST['email'];
 	$services = $_POST['services'];
 	$pricess = $_POST['cost_work'];
@@ -94,7 +95,7 @@ if (isset($_POST['submit'])) {
 								$amount = $charged;  //the amount in kobo. This value is actually NGN 300
 
 								// url to go to after payment
-								$callback_url = 'http://localhost/test/Haircare_Saloon/user/thank-you.php';
+								$callback_url = 'http://localhost/Haircare_Saloon/thank-you.php';
 
 								curl_setopt_array($curl, array(
 									CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
@@ -135,12 +136,14 @@ if (isset($_POST['submit'])) {
 
 								// Online payment ends
 							}
-							//yeah
 
 							//paystack ends*/
+						} elseif ($pays == "pay_offline") {
+							echo "<script> alert('booking Successful.') </script>";
+							echo "<script>window.location.href='thank-you.php'</script>";
 						}
 					} else {
-						echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+						echo "<script> alert('Something Went Wrong. Please try again.') </script>";
 					}
 				}
 			} elseif (($today == $dated) && ($exp < 5)) {
@@ -192,6 +195,26 @@ if (isset($_POST['submit'])) {
 
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/style.css">
+
+
+	<style>
+		.form-group {
+			display: flex;
+			padding-top: 2px;
+			/* padding-left: 0px; */
+			/* justify-content: space-between; */
+		}
+
+		li {
+			display: inline-block;
+			padding: 3px;
+			text-decoration: none;
+		}
+
+		/* .input-wraps{
+			padding-top: 10px;
+		} */
+	</style>
 </head>
 
 <body>
@@ -282,12 +305,12 @@ if (isset($_POST['submit'])) {
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="fa fa-chevron-down"></span></div>
-											<selectname="staffs" id="staffid" class="form-control" required>
+											<select name="staffs" id="staffid" class="form-control" required>
 												<option value="">Select service first*</option>
 
 												<option></option>
 
-												</select>
+											</select>
 										</div>
 									</div>
 								</div>
@@ -324,7 +347,7 @@ if (isset($_POST['submit'])) {
 												<?php $query = mysqli_query($con, "select * from tbltime");
 												while ($row = mysqli_fetch_array($query)) {
 												?>
-													<option value="<?php echo $row['time']; ?>"><?php echo $row['time']; ?></option>
+													<option style="color: red;" value="<?php echo $row['time']; ?>"><?php echo $row['time']; ?></option>
 												<?php } ?>
 											</select>
 										</div>
@@ -335,54 +358,68 @@ if (isset($_POST['submit'])) {
 							<div class="col-md-12">
 								<div class="form-group">
 									<div class="input-wrap">
-										<div class="icon"><span class="fa fa-clock-o"></span></div>
-										<input type="checkbox" name="pays" value="pay_online">
-									</div>
-								</div>
-							</div>
+										<div class="wrap1">
+											<li style="color:#fff;">Online</li>
+											<li><input type="checkbox" name="pays" value="pay_online"></li>
+										</div>
+										<div class="wrap2">
 
-							<div class="col-md-12">
-								<div class="form-group">
-									<div class="input-wrap">
-										<div class="icon"><span class="fa fa-clock-o"></span></div>
-										<input type="checkbox" name="pays" value="pay_offline">
-									</div>
-								</div>
-							</div>
+											<li style="color:#fff;">offline</li>
+											<li><input type="checkbox" name="pays" value="pay_online"></li>
 
-							<!-- <input type="checkbox" name="sids[]" value="<?php echo $row['ID']; ?>"> -->
-
-							<div class="col-md-12">
-								<div class="form-group">
-									<div id="able">
-
-										<button type="submit" name="submit" class="btn btn-white py-3 px-4">Book Now</button>
+										</div>
 
 									</div>
-									<!-- <div id="able">
-									<input type="submit" name="submit" value="Book Now" class="btn btn-white py-3 px-4">
-								</div> -->
 								</div>
+
 							</div>
 						</div>
-					</form>
 				</div>
-				<div class="col-sm-8 wrap-about py-5 ftco-animate img" style="background-image: url(images/stylist-3.jpg);">
-					<div class="row pb-5 pb-md-0">
-						<div class="col-md-12 col-lg-7">
-							<div class="heading-section mt-5 mb-4">
-								<div class="pl-lg-3 ml-md-5">
-									<span class="subheading">About</span>
-									<h2 class="mb-4">Welcome to Beauty Saloon</h2>
-								</div>
-							</div>
-							<div class="pl-lg-3 ml-md-5">
-								<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-							</div>
+
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="input-wraps">
+							<!-- <div class="icon">
+								<span style="color:#fff; ">Offline<input type="checkbox" name="pays" value="pay_offline"></span>
+							</div> -->
+
 						</div>
 					</div>
 				</div>
+
+				<!-- <input type="checkbox" name="sids[]" value="<?php echo $row['ID']; ?>"> -->
+
+				<div class="col-md-12">
+					<div class="form-group">
+						<div id="able">
+
+							<button type="submit" name="submit" class="btn btn-white py-3 px-4">Book Now</button>
+
+						</div>
+						<!-- <div id="able">
+									<input type="submit" name="submit" value="Book Now" class="btn btn-white py-3 px-4">
+								</div> -->
+					</div>
+				</div>
 			</div>
+			</form>
+		</div>
+		<div class="col-sm-8 wrap-about py-5 ftco-animate img" style="background-image: url(images/stylist-3.jpg);">
+			<div class="row pb-5 pb-md-0">
+				<div class="col-md-12 col-lg-7">
+					<div class="heading-section mt-5 mb-4">
+						<div class="pl-lg-3 ml-md-5">
+							<span class="subheading">About</span>
+							<h2 class="mb-4">Welcome to Beauty Saloon</h2>
+						</div>
+					</div>
+					<div class="pl-lg-3 ml-md-5">
+						<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
 		</div>
 	</section>
 

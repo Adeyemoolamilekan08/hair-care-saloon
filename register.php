@@ -120,23 +120,34 @@ session_start();
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $con_pass = mysqli_real_escape_string($con, $_POST['con_pass']);
         $phone = mysqli_real_escape_string($con, $_POST['mobile']);
-
-
+    
         if ($con_pass != $password) {
             echo "Password Does Not Match";
         } else {
-
-            $insert = "INSERT INTO tblusers(name, lastname, UserName, email, sex, Password, mobile, userimage, status)
+            // Check if email already exists
+            $select = "SELECT * FROM tblusers WHERE email = '$email'";
+            $result = mysqli_query($con, $select);
     
-       VALUES ('$fname', '$last', '$username', '$email', '$sex', '$password', '$phone', 'patient.jpg', '0')" or die(mysqli_error($con));
-
-            $result = mysqli_query($con, $insert);
-            if ($result) {
-                echo "<script> alert('Registration Successful')
-        location.href='login.php';
-</script>";
+            if (mysqli_num_rows($result) > 0) {
+                echo "<script> 
+                alert('Email already exists. Please enter another email.');
+                location.href='register.php';
+              </script>";
+                // echo "Email already exists. Please enter another email.";
             } else {
-                echo "errno";
+                // Proceed with user registration
+                $insert = "INSERT INTO tblusers(name, lastname, UserName, email, sex, Password, mobile, userimage, status)
+                            VALUES ('$fname', '$last', '$username', '$email', '$sex', '$password', '$phone', 'patient.jpg', '0')";
+    
+                $result = mysqli_query($con, $insert);
+                if ($result) {
+                    echo "<script> 
+                            alert('Registration Successful');
+                            location.href='login.php';
+                          </script>";
+                } else {
+                    echo "Registration failed. Please try again.";
+                }
             }
         }
     }

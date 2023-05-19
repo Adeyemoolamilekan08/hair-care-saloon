@@ -8,6 +8,7 @@ if (strlen($_SESSION['userid'] == 0)) {
 if (isset($_POST['submit'])) {
 
   $name = $_POST['name'];
+  $_SESSION['Name'] = $name;
   $email = $_POST['email'];
   $services = $_POST['services'];
   $pricess = $_POST['cost_work'];
@@ -94,7 +95,7 @@ if (isset($_POST['submit'])) {
                 $amount = $charged;  //the amount in kobo. This value is actually NGN 300
 
                 // url to go to after payment
-                $callback_url = 'http://localhost/test/Haircare_Saloon/user/thank-you.php';
+                $callback_url = 'http://localhost/Haircare_Saloon/user/thanks.php';
 
                 curl_setopt_array($curl, array(
                   CURLOPT_URL => "https://api.paystack.co/transaction/initialize",
@@ -137,8 +138,16 @@ if (isset($_POST['submit'])) {
               }
               //yeah
 
-              //paystack ends*/
+
+
+            } elseif ($pays == "pay_offline") {
+              echo "<script> alert('booking Successful.') </script>";
+              echo "<script>window.location.href='thanks.php'</script>";
             }
+
+
+            //paystack ends*/
+
           } else {
             echo "<script>alert('Something Went Wrong. Please try again.');</script>";
           }

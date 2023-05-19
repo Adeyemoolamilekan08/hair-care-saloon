@@ -1,3 +1,11 @@
+  <style>
+  .button:hover {
+    background-color: #007bff;
+  /* background-color: #4CAF50; Green  */
+  color: white;
+}
+</style>
+ 
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
    <!-- Brand Logo -->
@@ -23,7 +31,7 @@
         ?>
          <div class="image">
 
-           <img class="img-circle" src="admin_images/<?php echo $results['adminimage']; ?>" width="100%" height="100%" alt="User profile picture">
+           <img class="img-circle" src="admin_images/<?php echo $results['adminimage']; ?>" width="500" height="200" alt="Admin profile picture">
 
          </div>
          <div class="info">
@@ -39,17 +47,17 @@
      <!-- Sidebar Menu -->
      <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-         <li class="nav-item has-treeview menu-open">
-           <a href="dashboard.php" class="nav-link active">
+         <li class="nav-item has-treeview  button">
+           <a href="dashboard.php" class="nav-link">
              <i class="nav-icon fas fa-tachometer-alt"></i>
              <p>
                Dashboard
              </p>
            </a>
          </li>
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="#" class="nav-link">
-             <i class="nav-icon fas fa-chart-pie"></i>
+             <i class="nav-icon fa fa-tag"></i>
              <p>
                Services
                <i class="right fas fa-angle-left"></i>
@@ -70,9 +78,9 @@
              </li>
            </ul>
          </li>
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="#" class="nav-link">
-             <i class="nav-icon fas fa-chart-pie"></i>
+             <i class="nav-icon fas fa-plus"></i>
              <p>
                Manage Customers
                <i class="right fas fa-angle-left"></i>
@@ -106,7 +114,7 @@
            </ul>
          </li>
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="#" class="nav-link">
              <i class="nav-icon fas fa-chart-pie"></i>
              <p>
@@ -145,7 +153,7 @@
          </li>
 
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="#" class="nav-link">
              <i class="nav-icon fas fa-book"></i>
              <p>
@@ -180,15 +188,16 @@
              </li>
            </ul>
          </li>
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="invoices.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
+             <!-- <i class="nav-icon fas fa-edit"></i> -->
+             <i class="nav-icon fa fa-solid fa-file-invoice-dollar"></i>
              <p>
                Invoice
              </p>
            </a>
          </li>
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="search_appointment.php" class="nav-link">
              <i class="nav-icon fas fa-business-time"></i>
              <p>
@@ -197,9 +206,9 @@
            </a>
          </li>
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="assign_customer_services.php" class="nav-link">
-             <i class="nav-icon fas fa-edit"></i>
+             <i class="nav-icon fas fa-ring"></i>
              <p>
                Assign Services
              </p>
@@ -207,9 +216,10 @@
          </li>
 
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="search_invoice.php" class="nav-link">
-             <i class="nav-icon fas fa-business-time"></i>
+             <i class="nav-icon fa fa-regular fa-receipt"></i>
+             <!-- <i class="fas fa-business-time"></i> -->
              <p>
                Search Invoice
              </p>
@@ -217,16 +227,16 @@
          </li>
        
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="holiday.php" class="nav-link">
-             <i class="nav-icon fa fa-user"></i>
+             <i class="nav-icon fas fa-business-time"></i>
              <p>
                Set Holiday
              </p>
            </a>
          </li>
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview button">
            <a href="view-holiday.php" class="nav-link">
              <i class="nav-icon fas fa-edit"></i>
              <p>

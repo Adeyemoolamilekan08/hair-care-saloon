@@ -6,17 +6,17 @@ if (strlen($_SESSION['userid']==0)) {
 } else{
   if(isset($_POST['submit']))
   {
-    $eid=$_SESSION['userid'];
-    $userimage=$_FILES["userimage"]["name"];
-    move_uploaded_file($_FILES["userimage"]["tmp_name"],"user_images/".$_FILES["userimage"]["name"]);
-    $sql="update tblusers set userimage=:userimage where id=:eid";
-    $query= mysqli_query($con, $sql);
-    if ($query) {
-      echo '<script>alert("updated successfuly")</script>';
-      echo "<script>window.location.href ='update_userimage.php'</script>";
-    }else{
-      echo '<script>alert("something went wrong, please try again later")</script>';
-    }
+    // $eid=$_SESSION['userid'];
+    // $userimage=$_FILES["userimage"]["name"];
+    // move_uploaded_file($_FILES["userimage"]["tmp_name"],"user_images/".$_FILES["userimage"]["name"]);
+    // $sql="update tblusers set userimage=:userimage where id=:eid";
+    // $query= mysqli_query($con, $sql);
+    // if ($query) {
+    //   echo '<script>alert("updated successfuly")</script>';
+    //   echo "<script>window.location.href ='update_userimage.php'</script>";
+    // }else{
+    //   echo '<script>alert("something went wrong, please try again later")</script>';
+    // }
 
   }
   ?>
@@ -35,7 +35,8 @@ if (strlen($_SESSION['userid']==0)) {
     $name=$_POST['firstname'];
     $password=$_POST['password'];
     $username=$_POST['username'];
-    $sql="update tblusers set name=:name,UserName=:username,mobile=:mobile,mail=:email,Password=:password where id=:eid";
+    // $sql = "UPDATE tblstaffs SET name='$name', UserName='$username', email='$email', Password='$password', mobile='$mobile' WHERE id=$eid";
+    $sql="update tblusers set name='$name',UserName='$username',mobile='$mobile',email='$email',Password='$password' where id='$eid'";
     $query= mysqli_query($con, $sql);
     echo '<script>alert("updated successfuly")</script>';
     echo "<script>window.location.href ='profile.php'</script>";

@@ -65,15 +65,15 @@ if (strlen($_SESSION['adminid'] == 0)) {
                     <div class="card-body">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Staff Name</label>
-                        <input type="text" class="form-control" id="staff" name="staff" placeholder="Enter Staff name">
+                        <input type="text" class="form-control" id="staff" name="staff" placeholder="Enter Staff name" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Service Name</label>
-                        <input type="text" class="form-control" id="sername" name="sername" placeholder="Enter service name">
+                        <input type="text" class="form-control" id="sername" name="sername" placeholder="Enter service name" required>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Cost</label>
-                        <input type="text" class="form-control" id="cost" name="cost" placeholder="cost">
+                        <input type="text" class="form-control" id="cost" name="cost" placeholder="cost" required>
                       </div>
                     </div>
                     <!-- /.card-body -->

@@ -97,28 +97,35 @@ if (strlen($_SESSION['adminid'] == 0)) {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Gender</th>
-                        <th>Action</th>
+                        <th>AptDate</th>
+                        <th>AptTime</th>
+                        <th>Services</th>
+                        <!-- <th>Assign</th> -->
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      $ret = mysqli_query($con, "select * from  tblusers");
+                      // $ret = mysqli_query($con, "select * from  tblusers");
+                      $ret = mysqli_query($con, "select * from  tblappointment where Status='1' and Assign=''");
+
                       $cnt = 1;
                       while ($row = mysqli_fetch_array($ret)) {
 
                       ?>
 
                         <tr>
-                          <td><?php echo $cnt ?></td>
-                          <td><?php echo $row['name']; ?></td>
-                          <td><?php echo $row['email']; ?></td>
-                          <td><?php echo $row['mobile']; ?></td>
-                          <td><?php echo $row['sex']; ?></td>
-                         
-
+                          <td><?php echo $row['ID'] ?></td>
+                          <td><?php echo $row['Name']; ?></td>
+                          <td><?php echo $row['Email']; ?></td>
+                          <td><?php echo $row['PhoneNumber']; ?></td>
+                          <td><?php echo $row['AptDate']; ?></td>
+                          <td><?php echo $row['AptTime']; ?></td>
+                          <td><?php echo $row['Services']; ?></td>
+                        
                           <td>
-                            <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['ID']; ?>" title="assign services">Assign Services</a>
+                            <!-- <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['ID']; ?>" title="assign services">Assign Services</a> -->
+                            <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['ID']; ?>" title="assign services">Approve Appointment</a>
+
                           </td>
                         </tr>
                       <?php
