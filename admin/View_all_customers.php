@@ -38,7 +38,7 @@ include("includes/dbconnection.php");
 
               if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $select = mysqli_query($con, "SELECT * FROM tblusers WHERE id = '$id'") or die(mysqli_errno($con));
+                $select = mysqli_query($con, "SELECT * FROM tblusers WHERE userId  = '$id'") or die(mysqli_errno($con));
                 $row = mysqli_fetch_array($select);
               }
 

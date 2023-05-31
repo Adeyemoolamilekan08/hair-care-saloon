@@ -116,7 +116,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                           <td><?php echo $row['mobile']; ?></td>
                           <!-- <td><?php //echo $row['Password']; ?></td> -->
                           <td><?php echo $row['sex']; ?></td>
-                          <td><a href="View_all_customers.php?id=<?php echo $row['ID']; ?>">
+                          <td><a href="View_all_customers.php?id=<?php echo $row['userId']; ?>">
                               <img style="height: 50px;width: 50px;border-radius: 30%;" src="<?php echo "../user/user_images/" . $row['userimage']; ?>" /></a>
                           </td>
 
@@ -171,6 +171,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
           }
         });
       });
+
     });
   </script>
   <script type="text/javascript">

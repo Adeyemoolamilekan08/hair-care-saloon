@@ -120,7 +120,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                             <td><?php echo $row['MobileNumber']; ?></td>
                             <td><?php echo $row['Password']; ?></td>
                             <td><?php echo $row['Gender']; ?></td>
-                            <td><a href="View_all_Staff's.php?id=<?php echo $row['ID']; ?>">
+                            <td><a href="View_all_Staff's.php?id=<?php echo $row['staffId']; ?>">
                                 <img style="height: 50px;width: 50px;border-radius: 30%;" src="<?php echo "../staffs/staff_images/" . $row['staffimage']; ?>" /></a></td>
                           </tr>
                         <?php

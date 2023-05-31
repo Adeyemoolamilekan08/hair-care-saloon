@@ -8,10 +8,10 @@ if (strlen($_SESSION['userid'] == 0)) {
     $userid = $_SESSION['userid'];
     $cpassword = $_POST['currentpassword'];
     $newpassword = $_POST['newpassword'];
-    $query = mysqli_query($con, "select * from tblusers where ID='$userid' and   Password='$cpassword'");
+    $query = mysqli_query($con, "select * from tblusers where userId='$userid' and   Password='$cpassword'");
     $row = mysqli_num_rows($query);
     if ($row > 0) {
-      $ret = mysqli_query($con, "update tblusers set Password='$newpassword' where ID='$userid'");
+      $ret = mysqli_query($con, "update tblusers set Password='$newpassword' where userId='$userid'");
       $msg = "Your password successully changed";
     } else {
 
@@ -54,7 +54,7 @@ if (strlen($_SESSION['userid'] == 0)) {
 
                 <?php
                 $userid = $_SESSION['userid'];
-                $ret = mysqli_query($con, "select * from tblusers where ID='$userid'");
+                $ret = mysqli_query($con, "select * from tblusers where userId='$userid'");
                 $cnt = 1;
                 while ($row = mysqli_fetch_array($ret)) {
 

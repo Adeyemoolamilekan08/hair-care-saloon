@@ -82,7 +82,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                     <tbody>
                       <?php
                       $ret = mysqli_query($con, "select distinct tblusers.name,tblinvoice.BillingId,tblinvoice.PostingDate from  tblusers   
-                      join tblinvoice on tblusers.ID=tblinvoice.Userid  order by tblinvoice.ID desc");
+                      join tblinvoice on tblusers.userId=tblinvoice.Userid  order by tblinvoice.id desc");
                       $cnt = 1;
                       while ($row = mysqli_fetch_array($ret)) {
 

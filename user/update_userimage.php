@@ -10,7 +10,7 @@ if (strlen($_SESSION['userid']==0)) {
     $eid=$_SESSION['userid'];
     $userimage=$_FILES["userimage"]["name"];
     move_uploaded_file($_FILES["userimage"]["tmp_name"],"user_images/".$_FILES["userimage"]["name"]);
-    $sql=$con->query("update tblusers set userimage = '$userimage' where ID = '$eid' ")or die(mysqli_errno($con));
+    $sql=$con->query("update tblusers set userimage = '$userimage' where userId = '$eid' ")or die(mysqli_errno($con));
     // $query= mysqli_query($con, $sql);
     if ($sql) {
       echo '<script>alert("updated successfuly")</script>';
@@ -46,7 +46,7 @@ if (strlen($_SESSION['userid']==0)) {
               <?php
 
                       $eid=$_SESSION['userid'];
-                      $sql="SELECT * from tblusers where id='$eid' ";                                    
+                      $sql="SELECT * from tblusers where userId='$eid' ";                                    
                       $query =mysqli_query($con, $sql);
                       $results=mysqli_fetch_array($query);
                       $cnt=1;

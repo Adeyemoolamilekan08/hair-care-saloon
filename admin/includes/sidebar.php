@@ -17,10 +17,11 @@
    <!-- Sidebar -->
    <div class="sidebar">
      <!-- Sidebar user panel (optional) -->
-     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+     <div
+      class="user-panel mt-3 pb-3 mb-3 d-flex">
        <?php
         $eid = $_SESSION['adminid'];
-        $sql = "SELECT * from tbladmin where id='$eid' ";
+        $sql = "SELECT * from tbladmin where adminId='$eid' ";
         $query = mysqli_query($con, $sql);
         $results = mysqli_fetch_array($query);
         $cnt = 1;

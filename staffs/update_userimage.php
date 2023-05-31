@@ -10,7 +10,7 @@ if (strlen($_SESSION['staffid']==0)) {
     $eid=$_SESSION['staffid'];
     $staffimage=$_FILES["staffimage"]["name"];
     move_uploaded_file($_FILES["staffimage"]["tmp_name"],"staff_images/".$_FILES["staffimage"]["name"]);
-    $sql=$con->query("update tblstaffs set staffimage = '$staffimage' where ID = '$eid' ")or die(mysqli_errno($con));
+    $sql=$con->query("update tblstaffs set staffimage = '$staffimage' where staffId = '$eid' ")or die(mysqli_errno($con));
     // $query= mysqli_query($con, $sql);
     if ($sql) {
       echo '<script>alert("updated successfuly")</script>';
@@ -46,7 +46,7 @@ if (strlen($_SESSION['staffid']==0)) {
               <?php
 
                       $eid=$_SESSION['staffid'];
-                      $sql="SELECT * from tblstaffs where id='$eid' ";                                    
+                      $sql="SELECT * from tblstaffs where staffId='$eid' ";                                    
                       $query =mysqli_query($con, $sql);
                       $results=mysqli_fetch_array($query);
                       $cnt=1;

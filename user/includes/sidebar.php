@@ -22,7 +22,7 @@
        <?php
 
         $eid = $_SESSION['userid'];
-        $sql = "SELECT * from tblusers where id='$eid' ";
+        $sql = "SELECT * from tblusers where userId='$eid' ";
         $query = mysqli_query($con, $sql);
         $results = mysqli_fetch_array($query);
         $cnt = 1;

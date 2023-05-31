@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
     $query = mysqli_query($con, "select * from tbladmin where  UserName='$adminuser' && Password='$password' ");
     if (mysqli_num_rows($query) > 0) {
         $ret = mysqli_fetch_array($query);
-        $_SESSION['adminid'] = $ret['ID'];
+        $_SESSION['adminid'] = $ret['adminId'];
         $_SESSION['type'] = "Admin";
         $adminuser = $_SESSION['username'];
         // $password = $_SESSION['password'];
@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
         $query = mysqli_query($con, "select * from tblstaffs where  UserName='$adminuser' && Password='$password' ");
         if (mysqli_num_rows($query) > 0) {
             $star = mysqli_fetch_array($query);
-            $_SESSION['staffid'] = $star['ID'];
+            $_SESSION['staffid'] = $star['staffId'];
             // $_SESSION['staffname'] = $star['Name'];
             $_SESSION['type'] = "Staff";
             $_SESSION['username'] = $adminuser;
@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
             $query = mysqli_query($con, "select * from tblusers where  UserName='$adminuser' && Password='$password' ");
             if (mysqli_num_rows($query) > 0) {
                 $users = mysqli_fetch_array($query);
-                $_SESSION['userid'] = $users['ID'];
+                $_SESSION['userid'] = $users['userId'];
                 $_SESSION['type'] = "User";
                 $adminuser = $_SESSION['UserName'];
                 // $password = $_SESSION['password'];

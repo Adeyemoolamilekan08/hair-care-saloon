@@ -12,10 +12,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
 			<div class="table-responsive bs-example widget-shadow">
 				<?php
 				$invid = $_POST['edit_id'];
-				$ret = mysqli_query($con, "select DISTINCT  tblinvoice.PostingDate,tblusers.name,tblusers.email,tblusers.mobile,tblusers.sex
-					from  tblinvoice 
-					join tblusers on tblusers.ID=tblinvoice.Userid 
-					where tblinvoice.BillingId='$invid'");
+				$ret = mysqli_query($con, "select DISTINCT  tblinvoice.PostingDate,tblusers.name,tblusers.email,tblusers.mobile,tblusers.sex from  tblinvoice join tblusers on tblusers.userId=tblinvoice.Userid where tblinvoice.BillingId='$invid'");
 				$cnt = 1;
 				while ($row = mysqli_fetch_array($ret)) {
 				?>

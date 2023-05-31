@@ -36,7 +36,7 @@ if (strlen($_SESSION['userid']==0)) {
     $password=$_POST['password'];
     $username=$_POST['username'];
     // $sql = "UPDATE tblstaffs SET name='$name', UserName='$username', email='$email', Password='$password', mobile='$mobile' WHERE id=$eid";
-    $sql="update tblusers set name='$name',UserName='$username',mobile='$mobile',email='$email',Password='$password' where id='$eid'";
+    $sql="update tblusers set name='$name',UserName='$username',mobile='$mobile',email='$email',Password='$password' where userId='$eid'";
     $query= mysqli_query($con, $sql);
     echo '<script>alert("updated successfuly")</script>';
     echo "<script>window.location.href ='profile.php'</script>";
@@ -65,7 +65,7 @@ if (strlen($_SESSION['userid']==0)) {
             <form method="post">
               <?php
               $eid=$_SESSION['userid'];
-              $sql="SELECT * from tblusers where id='$eid' ";                                    
+              $sql="SELECT * from tblusers where userId='$eid' ";                                    
               $query =mysqli_query($con, $sql);
               $results=mysqli_fetch_array($query);
               $cnt=1;

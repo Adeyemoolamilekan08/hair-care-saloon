@@ -87,7 +87,7 @@ if (strlen($_SESSION['userid'] == 0)) {
 
 
                       $eid = $_SESSION['userid'];
-                      $sql = "SELECT * from tblusers WHERE ID='$eid' ";
+                      $sql = "SELECT * from tblusers WHERE userId='$eid' ";
                       $query = mysqli_query($con, $sql);
                       $results = mysqli_fetch_array($query);
                       $usr =   $results['UserName'];

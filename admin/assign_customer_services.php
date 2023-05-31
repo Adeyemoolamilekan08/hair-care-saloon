@@ -123,8 +123,8 @@ if (strlen($_SESSION['adminid'] == 0)) {
                           <td><?php echo $row['Services']; ?></td>
                         
                           <td>
-                            <!-- <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['ID']; ?>" title="assign services">Assign Services</a> -->
-                            <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['ID']; ?>" title="assign services">Approve Appointment</a>
+                            <!-- <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['userId']; ?>" title="assign services">Assign Services</a> -->
+                            <a href="#" class=" btn btn-sm btn-info edit_data2" id="<?php echo  $row['userId']; ?>" title="assign services">Approve Appointment</a>
 
                           </td>
                         </tr>

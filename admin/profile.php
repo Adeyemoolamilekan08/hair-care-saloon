@@ -33,7 +33,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                                             $password = $_POST['password'];
                                             $username = $_POST['username'];
 
-                                            $sql = "UPDATE tbladmin SET AdminName='$name', UserName='$username', Email='$email', 	Password='$password', MobileNumber='$mobile' WHERE id=$eid";
+                                            $sql = "UPDATE tbladmin SET AdminName='$name', UserName='$username', Email='$email', 	Password='$password', MobileNumber='$mobile' WHERE adminId=$eid";
                                             // $sql = "update tbladmin set AdminName=:name,UserName=:username,MobileNumber=:mobile,Email=:email,Password=:password where id=:eid";
                                             $query = mysqli_query($con, $sql);
                                             echo '<script>alert("updated successfuly")</script>';
@@ -64,7 +64,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
               <form method="post">
                 <?php
                                           $eid = $_SESSION['adminid'];
-                                          $sql = "SELECT * from tbladmin where id='$eid' ";
+                                          $sql = "SELECT * from tbladmin where adminId='$eid' ";
                                           $query = mysqli_query($con, $sql);
                                           $results = mysqli_fetch_array($query);
                                           $cnt = 1;

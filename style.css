@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h3 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-group .suggestion {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .form-group .suggestion span {
+            color: #f00;
+        }
+
+        .form-group .suggestion.hidden {
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #f00;
+        }
+
+        .form-group.error .suggestion {
+            color: #f00;
+        }
+
+        .form-group.error .suggestion span {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        .form-group.error .suggestion.hidden {
+            display: block;
+        }
+
+        .form-group .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Create New Account</h3>
+        <form role="form" id="registerForm" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" id="email" required>
+                <div class="suggestion hidden" id="emailSuggestion"></div>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" name="mobile" id="mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="con_pass">Confirm Password</label>
+                <input type="password" name="con_pass" id="con_pass" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Gender</label>
+                <select name="sex" id="sex" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+            <p><b>I already have an account</b> <a href="login.php">Click here</a></p>
+        </form>
+    </div>
+
+    <script>
+        // Function to suggest email
+        function suggestEmail(email) {
+            // Suggestion logic here
+            // Replace with your own logic to generate suggestions
+            const suggestions = ['example1@gmail.com', 'example2@gmail.com', 'example3@gmail.com'];
+
+            return suggestions;
+        }
+
+        // Function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+            const emailInput = document.getElementById('email');
+            const suggestionContainer = document.getElementById('emailSuggestion');
+            const email = emailInput.value.trim();
+            const suggestionList = suggestEmail(email);
+
+            // Clear previous suggestions and errors
+            suggestionContainer.innerHTML = '';
+            emailInput.classList.remove('error');
+
+            if (suggestionList.length > 0) {
+                const suggestionText = suggestionList.join(', ');
+                const suggestionElement = document.createElement('span');
+                suggestionElement.innerHTML = 'Email already exists. Please enter another email. Here are some suggestions: ' + suggestionText;
+                suggestionContainer.appendChild(suggestionElement);
+                suggestionContainer.classList.remove('hidden');
+                emailInput.classList.add('error');
+            }
+        }
+
+        // Attach event listener to the form
+        const registerForm = document.getElementById('registerForm');
+        registerForm.addEventListener('submit', handleSubmit);
+    </script>
+</body>
+
+</html>

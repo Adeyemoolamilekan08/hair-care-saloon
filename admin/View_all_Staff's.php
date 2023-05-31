@@ -32,7 +32,7 @@ include("includes/dbconnection.php");
 
               if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $select = mysqli_query($con, "SELECT * FROM tblstaffs WHERE id = '$id'") or die(mysqli_errno($con));
+                $select = mysqli_query($con, "SELECT * FROM tblstaffs WHERE staffId = '$id'") or die(mysqli_errno($con));
                 $row = mysqli_fetch_array($select);
               }
 

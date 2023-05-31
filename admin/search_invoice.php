@@ -105,7 +105,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                     <tbody>
                       <?php
                       $ret = mysqli_query($con, "select distinct  tblusers.name,tblinvoice.BillingId,tblinvoice.PostingDate from  tblusers   
-                      join tblinvoice on tblusers.ID=tblinvoice.Userid  where tblinvoice.BillingId like '%$sdata%'");
+                      join tblinvoice on tblusers.userId=tblinvoice.Userid  where tblinvoice.BillingId like '%$sdata%'");
                       $num = mysqli_num_rows($ret);
                       if ($num > 0) {
                         $cnt = 1;

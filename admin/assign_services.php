@@ -18,6 +18,15 @@ if (isset($_POST['save'])) {
   }
 }
 ?>
+
+
+
+
+
+
+
+
+
 <div class="card-body">
   <h4>Assign Services:</h4>
   <form method="post">
@@ -33,10 +42,10 @@ if (isset($_POST['save'])) {
       <tbody>
         <?php
         $eid = $_POST['edit_id'];
-        $ret = mysqli_query($con, "select * from  tblusers where ID='$eid'");
+        $ret = mysqli_query($con, "select * from  tblusers where userId ='$eid'");
         $cnt = 1;
         while ($row = mysqli_fetch_array($ret)) {
-          $_SESSION['gid'] = $row['ID'];
+          $_SESSION['gid'] = $row['userId '];
         }
         $ret = mysqli_query($con, "select *from  tblservices");
         $cnt = 1;

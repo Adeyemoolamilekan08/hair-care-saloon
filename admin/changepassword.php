@@ -8,10 +8,10 @@ if (strlen($_SESSION['adminid'] == 0)) {
     $adminid = $_SESSION['adminid'];
     $cpassword = $_POST['currentpassword'];
     $newpassword = $_POST['newpassword'];
-    $query = mysqli_query($con, "select * from tbladmin where ID='$adminid' and   Password='$cpassword'");
+    $query = mysqli_query($con, "select * from tbladmin where adminId='$adminid' and   Password='$cpassword'");
     $row = mysqli_num_rows($query);
     if ($row > 0) {
-      $ret = mysqli_query($con, "update tbladmin set Password='$newpassword' where ID='$adminid'");
+      $ret = mysqli_query($con, "update tbladmin set Password='$newpassword' where adminId='$adminid'");
       $msg = "Your password successully changed";
     } else {
 
@@ -57,7 +57,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
 
                 <?php
                 $adminid = $_SESSION['adminid'];
-                $ret = mysqli_query($con, "select * from tbladmin where ID='$adminid'");
+                $ret = mysqli_query($con, "select * from tbladmin where adminId='$adminid'");
                 $cnt = 1;
                 while ($row = mysqli_fetch_array($ret)) {
 

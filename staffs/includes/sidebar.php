@@ -22,7 +22,7 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
     <?php
           $eid=$_SESSION['staffid'];
-        $sql="SELECT * from tblstaffs where id='$eid' ";                                    
+        $sql="SELECT * from tblstaffs where staffId='$eid' ";                                    
         $query =mysqli_query($con, $sql);
         $results=mysqli_fetch_array($query);
         $cnt=1;

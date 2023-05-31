@@ -85,7 +85,7 @@ if (strlen($_SESSION['staffid'] == 0)) {
                       <?php
                       include('includes/dbcon.php');
                       $real = $_SESSION['staffid'];
-                      $query = mysqli_query($con, "SELECT * FROM tblstaffs WHERE ID='$real' ");
+                      $query = mysqli_query($con, "SELECT * FROM tblstaffs WHERE staffId='$real' ");
                       $col = mysqli_fetch_array($query);
                       $stfname = $col['UserName'];
                       $query2 = mysqli_query($con, "SELECT * FROM tblappointment WHERE Staffs='$stfname' ");

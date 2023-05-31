@@ -9,7 +9,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
     $eid = $_SESSION['adminid'];
     $adminimage = $_FILES["adminimage"]["name"];
     move_uploaded_file($_FILES["adminimage"]["tmp_name"], "admin_images/" . $_FILES["adminimage"]["name"]);
-    $sql = $con->query("update tbladmin set adminimage = '$adminimage' where ID = '$eid' ") or die(mysqli_errno($con));
+    $sql = $con->query("update tbladmin set adminimage = '$adminimage' where adminId = '$eid' ") or die(mysqli_errno($con));
     // $query= mysqli_query($con, $sql);
     if ($sql) {
       echo '<script>alert("updated successfuly")</script>';
@@ -45,7 +45,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
                 <?php
 
                 $eid = $_SESSION['adminid'];
-                $sql = "SELECT * from tbladmin where id='$eid' ";
+                $sql = "SELECT * from tbladmin where adminId='$eid' ";
                 $query = mysqli_query($con, $sql);
                 $results = mysqli_fetch_array($query);
                 $cnt = 1;
