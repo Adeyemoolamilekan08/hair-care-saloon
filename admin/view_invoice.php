@@ -50,6 +50,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
 					</tr>
 
 					<?php
+					$gtotal = 0;
 					$ret = mysqli_query($con, "select tblservices.StaffName,tblservices.ServiceName,tblservices.Cost  
 						from  tblinvoice 
 						join tblservices on tblservices.ID=tblinvoice.ServiceId 
@@ -70,7 +71,7 @@ if (strlen($_SESSION['adminid'] == 0)) {
 					} ?>
 					<tr>
 						<th colspan="2" style="text-align:center">Grand Total</th>
-						<th><?php echo $gtotal ?></th>
+						<th><?php echo number_format($gtotal, 2); ?></th>
 					</tr>
 				</table>
 				<p style="margin-top:1%" align="center">
